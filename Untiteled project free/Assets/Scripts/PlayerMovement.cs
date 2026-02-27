@@ -12,7 +12,7 @@ public class SpaceMovement : MonoBehaviour
 
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.2f;
     public LayerMask groundMask;
 
     Vector3 velocity;
