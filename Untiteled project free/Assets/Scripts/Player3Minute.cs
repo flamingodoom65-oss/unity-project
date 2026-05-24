@@ -6,10 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Stamina=300;
-    public float MaxStamina;
-    public float sprintImpact=100;
-    public float sprintRecovery = 7f/10f;
+    
     float sprintMultiplier = 1f;///post
     public float sprintModifier = 1.5f;///post
     // Camera Rotation
