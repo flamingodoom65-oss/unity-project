@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         // {
         //     transform.position += new Vector3(-speed*Time.deltaTime,0,0);
         // }
-        if (Input.GetKey(KeyCode.LeftShift)&&stamina>0)
+        if (Input.GetKey(KeyCode.LeftShift)&&stamina>0&&(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D)))
         {
             sprintVal = 1.5f;
             stamina -= Time.deltaTime*staminaDrain;
@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             sprintVal = 1f;
+            if (stamina < 100)
+            {
+                stamina+=Time.deltaTime*staminaDrain/4;               
+            }
+            
         }
         if (sprintVal < 0)
         {
