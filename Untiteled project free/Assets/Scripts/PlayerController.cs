@@ -8,10 +8,17 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 200f;
     private bool isGrounded = false;
     private float sprintVal = 1f;
-    private float stamina = 100;
-    private float staminaDrain = 10f;
+    public float stamina = 100;
+    public float staminaDrain = 10f;
+    public float hunger = 100;
+    public float hungerDrain = 2f;
+    public float thirst = 100;
+    public float thirstDrain = 3f;
     public Canvas canvas;
     public TextMeshProUGUI staminaText;
+    public TextMeshProUGUI hungerText;
+    public TextMeshProUGUI thirstText;
+
     private Rigidbody rb;
 
     
@@ -37,23 +44,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         staminaText.text = "Stamina: " + Mathf.Round(stamina);
+        hungerText.text = "Hunger: " + Mathf.Round(hunger);
+        thirstText.text = "Thirst: " + Mathf.Round(thirst);
+        if (hunger > 0)
+        {
+            hunger-=Time.deltaTime*hungerDrain;
+        }
+        if (thirst > 0)
+        {
+            thirst -= Time.deltaTime*thirstDrain;
+        }
 
-        // if(Input.GetKey(KeyCode.W)){
-        //     transform.position += new Vector3(0,0,speed*Time.deltaTime);
-
-        // }
-        // if (Input.GetKey(KeyCode.S))
-        // {
-        //     transform.position += new Vector3(0,0,-speed*Time.deltaTime);
-        // } 
-        // if (Input.GetKey(KeyCode.D))
-        // {
-        //     transform.position += new Vector3(speed*Time.deltaTime,0,0);
-        // }
-        // if (Input.GetKey(KeyCode.A))
-        // {
-        //     transform.position += new Vector3(-speed*Time.deltaTime,0,0);
-        // }
+       
         if (Input.GetKey(KeyCode.LeftShift)&&stamina>0&&(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D)))
         {
             sprintVal = 1.5f;
